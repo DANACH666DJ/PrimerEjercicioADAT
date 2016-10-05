@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.sql.*;
 
 public class bbdda {
@@ -54,13 +56,12 @@ public class bbdda {
 		ArrayList<String>nombres=new ArrayList<String>();
 		try {
 			if (conexion != null) {
-				String query = "SELECT Nombre From personajes.person  ;";
+				String query = "SELECT nombre From personajes.personajes  ;";
 				PreparedStatement pstmt = conexion.prepareStatement(query);
 				ResultSet rset = pstmt.executeQuery();
 				while (rset.next()) {
                  
-				    String nombre = rset.getString("Nombre");
-					System.out.println(nombre);
+				    String nombre = rset.getString("nombre");
 					
 					nombres.add(nombre);
 				}
@@ -77,13 +78,13 @@ public class bbdda {
 	}
 	
 	
-	public void EscribirBbdda(String Nombre) {
+	public void escribirBbdda(ArrayList<String>personajes) {
 		try {
 			if (conexion != null) {
 				String query = " INSERT INTO `personajes`.`person` (`Nombre`) VALUES (?)";
 				PreparedStatement pstmt = conexion.prepareStatement(query);
 				ResultSet rset = pstmt.executeQuery();
-				pstmt.setString(1, Nombre);
+				pstmt.setArray(1, (Array) personajes);
 				pstmt.close();
 				System.out.println("Insercion Nombre Correcta");
 				

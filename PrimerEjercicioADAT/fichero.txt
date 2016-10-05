@@ -1,2 +1,6 @@
 goku
 vegeta
+krillin
+tensian
+wilma
+luis

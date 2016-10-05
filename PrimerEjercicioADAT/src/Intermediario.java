@@ -43,16 +43,16 @@ public class Intermediario {
 						ficheroPantalla();
 						break;
 					case 3:
-						
+						ficheroBbdda();
 						break;
 					case 4:
 						bbddaFichero();
 						break;
 					case 5:
-						
+						pantallaBbdda();
 						break;
 					case 6:
-						
+						bbddaPantalla();
 						break;
 					case 7:// Salir
 						salir = true;
@@ -74,8 +74,35 @@ public class Intermediario {
 	}
 
 
+	private void bbddaPantalla() {
+		// TODO Auto-generated method stub
+		System.out.println("Pasamos los datos base de datos a pantalla");
+		ArrayList<String> ed =base.leerBbdda();
+		engargadoTecladoPantalla.MostrarPersonajes(ed);
+		
+	   
+	}
+
+	private void pantallaBbdda() {
+		// TODO Auto-generated method stub
+		System.out.println("Pasamos los datos de pantalla a base de datos");
+		ArrayList<String> ed = engargadoTecladoPantalla.getPersonajes();
+		base.escribirBbdda(ed);
+		//SIN TERMINAR
+	}
+
+	private void ficheroBbdda() throws IOException {
+		// TODO Auto-generated method stub
+		System.out.println("Pasamos los datos de fichero a base de datos");
+		ArrayList<String> ed = encargadoFicheros.leerFichero("fichero.txt");
+		base.escribirBbdda(ed);
+		//SIN TERMINAR<
+		
+	}
+
 	private void bbddaFichero() {
 		// TODO Auto-generated method stub
+		System.out.println("Pasamos datos de base de datos  a fichero");
 		ArrayList<String> ed = base.leerBbdda();
 		
 		encargadoFicheros.escribirFichero(ed);
