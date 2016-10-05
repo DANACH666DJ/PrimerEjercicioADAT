@@ -88,7 +88,7 @@ public class Intermediario {
 		System.out.println("Pasamos los datos de pantalla a base de datos");
 		ArrayList<String> ed = engargadoTecladoPantalla.getPersonajes();
 		base.escribirBbdda(ed);
-		//SIN TERMINAR
+		
 	}
 
 	private void ficheroBbdda() throws IOException {
