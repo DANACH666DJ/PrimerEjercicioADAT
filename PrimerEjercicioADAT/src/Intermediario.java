@@ -96,7 +96,7 @@ public class Intermediario {
 		System.out.println("Pasamos los datos de fichero a base de datos");
 		ArrayList<String> ed = encargadoFicheros.leerFichero("fichero.txt");
 		base.escribirBbdda(ed);
-		//SIN TERMINAR<
+		
 		
 	}
 

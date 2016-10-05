@@ -79,21 +79,29 @@ public class bbdda {
 	
 	
 	public void escribirBbdda(ArrayList<String>personajes) {
-		try {
-			if (conexion != null) {
-				String query = " INSERT INTO `personajes`.`person` (`Nombre`) VALUES (?)";
-				PreparedStatement pstmt = conexion.prepareStatement(query);
-				ResultSet rset = pstmt.executeQuery();
-				pstmt.setArray(1, (Array) personajes);
-				pstmt.close();
-				System.out.println("Insercion Nombre Correcta");
-				
-			} else {
-				System.out.println("conexion Nula");
+		Iterator<String>itr=personajes.iterator();
+		String nombre="";
+		while(itr.hasNext()){
+        nombre=itr.next();
+			try {
+				if (conexion != null) {
+					String query = " INSERT INTO `personajes`.`personajes` (`nombre`) VALUES (?)";
+					PreparedStatement pstmt = conexion.prepareStatement(query);
+					//ResultSet rset = pstmt.executeQuery();
+					pstmt.setString(1,nombre);
+					pstmt.executeUpdate();
+					pstmt.close();
+					System.out.println("Insercion Nombre Correcta");
+					
+				} else {
+					System.out.println("conexion Nula");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			
 		}
+		
 	}
 	
 	
